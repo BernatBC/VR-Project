@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement1 : MonoBehaviour
 {
 
     public float speed = 1f;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void Update1()
     {
         Vector2 move = moveAction.ReadValue<Vector2>();
         debugText.text = "Horizontal: " + move.x + ", Vertical: " + move.y;

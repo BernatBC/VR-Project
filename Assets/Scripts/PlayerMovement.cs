@@ -4,12 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement1 : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
     public float speed = 1f;
-
-    public TextMeshPro debugText;
 
     InputAction moveAction;
 
@@ -19,14 +17,11 @@ public class PlayerMovement1 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update1()
+    void Update()
     {
         Vector2 move = moveAction.ReadValue<Vector2>();
-        debugText.text = "Horizontal: " + move.x + ", Vertical: " + move.y;
-
-        Debug.Log(move.x + ", " + move.y);
 
         // Move the player
-        transform.position += transform.forward * speed * Time.deltaTime * move.y + transform.right * speed * Time.deltaTime * move.x;
+        transform.position += gameObject.transform.GetChild(0).forward * speed * Time.deltaTime * move.y + gameObject.transform.GetChild(0).forward * speed * Time.deltaTime * move.x;
     }
 }

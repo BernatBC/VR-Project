@@ -35,6 +35,15 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GrabDrop"",
+                    ""type"": ""Value"",
+                    ""id"": ""904e9a37-fc83-453e-aa03-eeb17e7b86e7"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -48,6 +57,17 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c8b4c3eb-7e68-4a67-918c-1c5ff7bc58cf"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GrabDrop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -57,6 +77,7 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_GrabDrop = m_Player.FindAction("GrabDrop", throwIfNotFound: true);
     }
 
     ~@PlayerControlls()
@@ -124,11 +145,13 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_GrabDrop;
     public struct PlayerActions
     {
         private @PlayerControlls m_Wrapper;
         public PlayerActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @GrabDrop => m_Wrapper.m_Player_GrabDrop;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -141,6 +164,9 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @GrabDrop.started += instance.OnGrabDrop;
+            @GrabDrop.performed += instance.OnGrabDrop;
+            @GrabDrop.canceled += instance.OnGrabDrop;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -148,6 +174,9 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @GrabDrop.started -= instance.OnGrabDrop;
+            @GrabDrop.performed -= instance.OnGrabDrop;
+            @GrabDrop.canceled -= instance.OnGrabDrop;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -168,5 +197,6 @@ public partial class @PlayerControlls: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnGrabDrop(InputAction.CallbackContext context);
     }
 }

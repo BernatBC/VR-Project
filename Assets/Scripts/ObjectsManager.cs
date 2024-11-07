@@ -31,19 +31,29 @@ public class ObjectsManager : MonoBehaviour
             DropObject();
         }
         if (makeAction.ReadValue<float>() > 0.1) {
-            if (currentObject.name == "weapon") Debug.Log("Shoot gun");
-            else MakeInteraction();
+            MakeInteraction();
         }
     }
 
     private void MakeInteraction() {
         if (currentObject == null || freezePeriod) return;
+
+        if (currentObject.name == "weapon") {
+            // Shoot
+            StartCoroutine(FreezePeriod(1f));
+            return;
+        }
+
         foreach (var item in placeHolderObjects)
         {
             if (item.name == currentObject.GetComponent<InteractiveFeedback>().objectId) item.SetActive(false);
         }
-        currentObject.GetComponent<Explosion>().MakeInteraction(transform);
+        Vector3 dropPosition = transform.position + gameObject.transform.GetChild(0).forward;
+        transform.position = dropPosition;
+        currentObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.GetChild(0).forward * 20, ForceMode.Impulse);
+        currentObject.SetActive(true);
         currentObject = null;
+        StartCoroutine(WaitAndExplode(3f));
         StartCoroutine(FreezePeriod(1f));
     }
 
@@ -80,5 +90,12 @@ public class ObjectsManager : MonoBehaviour
         freezePeriod = true;
         yield return new WaitForSeconds(delay);
         freezePeriod = false;
+    }
+
+    private IEnumerator WaitAndExplode(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        // Explosion animation
+        Destroy(gameObject);
     }
 }

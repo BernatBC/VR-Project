@@ -2918,6 +2918,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2073008514027219181, guid: 54c8a8bbc7fe0894683ef18eb674b085, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e7a0b08be3ac8b418e615ab7eac86cf, type: 2}
     - target: {fileID: 2310932094428551007, guid: 54c8a8bbc7fe0894683ef18eb674b085, type: 3}
       propertyPath: m_Name
       value: minePrefab
@@ -2926,6 +2930,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5436434000909928915, guid: 54c8a8bbc7fe0894683ef18eb674b085, type: 3}
+      propertyPath: InactiveMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e7a0b08be3ac8b418e615ab7eac86cf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3014,6 +3022,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: nuclearPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3540373325412684465, guid: 729506d045ace2045aba4f85f9b04aab, type: 3}
+      propertyPath: InactiveMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e7a0b08be3ac8b418e615ab7eac86cf, type: 2}
     - target: {fileID: 4510200504319867272, guid: 729506d045ace2045aba4f85f9b04aab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.16
@@ -3054,6 +3066,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8447801504344518691, guid: 729506d045ace2045aba4f85f9b04aab, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e7a0b08be3ac8b418e615ab7eac86cf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3134,6 +3150,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: grenadePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3253938738530381803, guid: bdf33bdfec7d85c4fad14332eec75fc9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e7a0b08be3ac8b418e615ab7eac86cf, type: 2}
+    - target: {fileID: 6865869520668326871, guid: bdf33bdfec7d85c4fad14332eec75fc9, type: 3}
+      propertyPath: InactiveMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0e7a0b08be3ac8b418e615ab7eac86cf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

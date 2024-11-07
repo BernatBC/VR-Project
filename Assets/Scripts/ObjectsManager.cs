@@ -49,7 +49,7 @@ public class ObjectsManager : MonoBehaviour
             if (item.name == currentObject.GetComponent<InteractiveFeedback>().objectId) item.SetActive(false);
         }
         Vector3 dropPosition = transform.position + gameObject.transform.GetChild(0).forward;
-        transform.position = dropPosition;
+        currentObject.transform.position = dropPosition;
         currentObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.GetChild(0).forward * 20, ForceMode.Impulse);
         currentObject.SetActive(true);
         currentObject = null;

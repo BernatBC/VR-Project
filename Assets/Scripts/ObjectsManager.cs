@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 
 public class ObjectsManager : MonoBehaviour
 {
-
+    public ParticleSystem grenadesExplosion;
+    public ParticleSystem gunShotExplosion;
     public GameObject[] placeHolderObjects;
 
     private GameObject currentObject = null;
@@ -38,8 +39,9 @@ public class ObjectsManager : MonoBehaviour
     private void MakeInteraction() {
         if (currentObject == null || freezePeriod) return;
 
-        if (currentObject.name == "weapon") {
+        if (currentObject.GetComponent<InteractiveFeedback>().objectId == "weapon") {
             // Shoot
+            gunShotExplosion.Play();
             StartCoroutine(FreezePeriod(1f));
             return;
         }
@@ -48,12 +50,11 @@ public class ObjectsManager : MonoBehaviour
         {
             if (item.name == currentObject.GetComponent<InteractiveFeedback>().objectId) item.SetActive(false);
         }
-        Vector3 dropPosition = transform.position + gameObject.transform.GetChild(0).forward;
+        Vector3 dropPosition = transform.position + 6*gameObject.transform.GetChild(0).forward;
         currentObject.transform.position = dropPosition;
-        currentObject.GetComponent<Rigidbody>().AddForce(gameObject.transform.GetChild(0).forward * 20, ForceMode.Impulse);
         currentObject.SetActive(true);
+        StartCoroutine(WaitAndExplode(currentObject, 2.25f));
         currentObject = null;
-        StartCoroutine(WaitAndExplode(3f));
         StartCoroutine(FreezePeriod(1f));
     }
 
@@ -92,10 +93,11 @@ public class ObjectsManager : MonoBehaviour
         freezePeriod = false;
     }
 
-    private IEnumerator WaitAndExplode(float delay)
+    private IEnumerator WaitAndExplode(GameObject obj, float delay)
     {
         yield return new WaitForSeconds(delay);
-        // Explosion animation
-        Destroy(gameObject);
+        grenadesExplosion.transform.position = obj.transform.position;
+        grenadesExplosion.Play();
+        Destroy(obj);
     }
 }

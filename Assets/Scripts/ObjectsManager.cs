@@ -12,6 +12,7 @@ public class ObjectsManager : MonoBehaviour
     private GameObject currentObject = null;
 
     InputAction dropAction;
+    InputAction makeAction;
 
     bool freezePeriod = false;
 
@@ -19,6 +20,7 @@ public class ObjectsManager : MonoBehaviour
     void Start()
     {
         dropAction = InputSystem.actions.FindAction("GrabDrop");
+        makeAction = InputSystem.actions.FindAction("MakeAction");
     }
 
     // Update is called once per frame
@@ -28,6 +30,20 @@ public class ObjectsManager : MonoBehaviour
         {
             DropObject();
         }
+        if (makeAction.ReadValue<float>() > 0.1) {
+            MakeInteraction();
+        }
+    }
+
+    private void MakeInteraction() {
+        if (currentObject == null || freezePeriod) return;
+        foreach (var item in placeHolderObjects)
+        {
+            if (item.name == currentObject.GetComponent<InteractiveFeedback>().objectId) item.SetActive(false);
+        }
+        currentObject.GetComponent<Explosion>().MakeInteraction();
+        currentObject = null;
+        StartCoroutine(FreezePeriod(1f));
     }
 
     private void DropObject() {

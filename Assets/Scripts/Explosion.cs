@@ -18,12 +18,12 @@ public class Explosion : MonoBehaviour
 
     }
 
-    public void MakeInteraction() {
+    public void MakeInteraction(Transform playerTransform) {
         // Throw object
-        Vector3 forwardVector = GameObject.Find("Player").transform.GetChild(0).forward;
-        Vector3 dropPosition = transform.position + forwardVector;
+        Vector3 forwardVector = playerTransform.GetChild(0).forward;
+        Vector3 dropPosition = playerTransform.position + forwardVector;
         transform.position = dropPosition;
-        gameObject.GetComponent<Rigidbody>().AddForce(forwardVector * 5, ForceMode.Impulse);
+        gameObject.GetComponent<Rigidbody>().AddForce(forwardVector * 20, ForceMode.Impulse);
         gameObject.SetActive(true);
         StartCoroutine(WaitAndExplode(3f));
     }

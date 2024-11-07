@@ -31,7 +31,8 @@ public class ObjectsManager : MonoBehaviour
             DropObject();
         }
         if (makeAction.ReadValue<float>() > 0.1) {
-            MakeInteraction();
+            if (currentObject.name == "weapon") Debug.Log("Shoot gun");
+            else MakeInteraction();
         }
     }
 
@@ -41,7 +42,7 @@ public class ObjectsManager : MonoBehaviour
         {
             if (item.name == currentObject.GetComponent<InteractiveFeedback>().objectId) item.SetActive(false);
         }
-        currentObject.GetComponent<Explosion>().MakeInteraction();
+        currentObject.GetComponent<Explosion>().MakeInteraction(transform);
         currentObject = null;
         StartCoroutine(FreezePeriod(1f));
     }

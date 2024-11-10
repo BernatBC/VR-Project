@@ -22,6 +22,6 @@ public class PlayerMovement : MonoBehaviour
         Vector2 move = moveAction.ReadValue<Vector2>();
 
         // Move the player
-        transform.position += gameObject.transform.GetChild(0).forward * speed * Time.deltaTime * move.y + gameObject.transform.GetChild(0).forward * speed * Time.deltaTime * move.x;
+        transform.position += gameObject.transform.GetChild(0).forward * speed * Time.deltaTime * move.y + gameObject.transform.GetChild(0).right * speed * Time.deltaTime * move.x;
     }
 }

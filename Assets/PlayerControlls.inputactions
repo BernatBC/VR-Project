@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "MakeAction",
+                    "type": "Value",
+                    "id": "73a00685-59da-428b-8657-c64db0ffd7ac",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -39,11 +48,22 @@
                 {
                     "name": "",
                     "id": "c8b4c3eb-7e68-4a67-918c-1c5ff7bc58cf",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "GrabDrop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a5799e36-1c51-4f1b-a047-9a9f6c676e9f",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MakeAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

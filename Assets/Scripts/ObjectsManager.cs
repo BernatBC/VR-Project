@@ -53,7 +53,7 @@ public class ObjectsManager : MonoBehaviour
         Vector3 dropPosition = transform.position + 6*gameObject.transform.GetChild(0).forward;
         currentObject.transform.position = dropPosition;
         currentObject.SetActive(true);
-        StartCoroutine(WaitAndExplode(currentObject, 2.25f));
+        StartCoroutine(WaitAndExplode(currentObject, 1f));
         currentObject = null;
         StartCoroutine(FreezePeriod(1f));
     }

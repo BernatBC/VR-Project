@@ -8,11 +8,21 @@ public class InteractiveButton : MonoBehaviour
 {
 
     public Material InactiveMaterial;
-    public Material GazedAtMaterial;
+    public Material SelectedInactiveMaterial;
+    public Material ActiveMaterial;
+    public Material SelectedActiveMaterial;
+
     public bool fovToggler = false;
     public bool changeTimeToggler = false;
 
+    public GameObject fovRestricter;
+    public GameObject mainCamera;
+
     private MeshRenderer _myRenderer;
+    private bool buttonIsActive = false;
+    private bool freezePeriod = false;
+    private Color skyBlue = new Color(0.55f, 0.72f, 0.98f);
+    private Color darkBlue = new Color(0.13f, 0.21f, 0.36f);
 
     InputAction makeAction;
 
@@ -20,7 +30,7 @@ public class InteractiveButton : MonoBehaviour
 
     public void Start()
     {
-        makeAction = InputSystem.actions.FindAction("makeAction");
+        makeAction = InputSystem.actions.FindAction("MakeAction");
         _myRenderer = GetComponent<MeshRenderer>();
         SetMaterial();
     }
@@ -37,25 +47,40 @@ public class InteractiveButton : MonoBehaviour
         SetMaterial();
     }
 
-    public void OnPointerClick()
-    {
-        Debug.Log("Grab object");
-    }
-
     private void SetMaterial()
     {
-        if (InactiveMaterial != null && GazedAtMaterial != null)
+        if (InactiveMaterial != null && ActiveMaterial != null && SelectedInactiveMaterial != null && SelectedActiveMaterial != null)
         {
-            _myRenderer.material = selected ? GazedAtMaterial : InactiveMaterial;
+            _myRenderer.material = GetMaterial();
         }
+    }
+
+    private Material GetMaterial() {
+        if (buttonIsActive) return selected ? SelectedActiveMaterial : ActiveMaterial;
+        else return selected ? SelectedInactiveMaterial : InactiveMaterial;
     }
 
     private void Update()
     {
-        if (selected && makeAction.ReadValue<float>() > 0.1)
+        if (!freezePeriod && selected && makeAction.ReadValue<float>() > 0.1)
         {
-            if (fovToggler) Debug.Log("Toggling FOV");
-            if (changeTimeToggler) Debug.Log("Changing light");
+            buttonIsActive = !buttonIsActive;
+            SetMaterial();
+            if (fovToggler) {
+                fovRestricter.SetActive(buttonIsActive);
+            }
+            if (changeTimeToggler) {
+
+                mainCamera.GetComponent<Camera>().backgroundColor = buttonIsActive ? skyBlue : darkBlue;
+            }
+            StartCoroutine(FreezePeriod(1f));
         }
+    }
+
+    private IEnumerator FreezePeriod(float delay)
+    {
+        freezePeriod = true;
+        yield return new WaitForSeconds(delay);
+        freezePeriod = false;
     }
 }

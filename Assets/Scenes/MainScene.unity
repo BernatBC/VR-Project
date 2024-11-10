@@ -773,6 +773,7 @@ GameObject:
   - component: {fileID: 336512089}
   - component: {fileID: 336512088}
   - component: {fileID: 336512087}
+  - component: {fileID: 336512090}
   m_Layer: 0
   m_Name: Portal-Battlefield
   m_TagString: Portal B
@@ -848,6 +849,27 @@ Transform:
   - {fileID: 1886862256}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -87.981, y: 0, z: 0}
+--- !u!65 &336512090
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336512086}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 10, z: 1.0000001}
+  m_Center: {x: 0.00000005960464, y: -2, z: -0.00000008940695}
 --- !u!1 &389534254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1429,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459441770}
   m_CullTransparentMesh: 1
+--- !u!1 &508547126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508547127}
+  m_Layer: 0
+  m_Name: menuSceneExit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &508547127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508547126}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 23.61, y: -1.0059483, z: 27.62044}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &514091173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,7 +2514,7 @@ Transform:
   m_GameObject: {fileID: 907292807}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.26648137, z: 0, w: 0.96384007}
-  m_LocalPosition: {x: 29.25, y: -1.37, z: 21.5}
+  m_LocalPosition: {x: 29.25, y: -1.37, z: 22.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2562,8 +2615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b0e31921703b4a4e92cb796c1d2a460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitialPos: {fileID: 0}
-  BattlefieldPos: {fileID: 0}
+  InitialPos: {fileID: 508547127}
+  BattlefieldPos: {fileID: 1333728280}
 --- !u!1 &915188828 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2153799926408870460, guid: bdf33bdfec7d85c4fad14332eec75fc9, type: 3}
@@ -3820,6 +3873,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6a512d95615f534cbe31aba1aaa354c, type: 3}
+--- !u!1 &1333728279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1333728280}
+  m_Layer: 0
+  m_Name: mainSceneExit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1333728280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333728279}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 18.73, y: 13.665949, z: 11.479561}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1334462558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,6 +3915,7 @@ GameObject:
   - component: {fileID: 1334462561}
   - component: {fileID: 1334462560}
   - component: {fileID: 1334462559}
+  - component: {fileID: 1334462562}
   m_Layer: 0
   m_Name: Portal-Initial-Scene
   m_TagString: Portal A
@@ -3906,6 +3991,27 @@ Transform:
   - {fileID: 830556740}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -87.981, y: 0, z: 0}
+--- !u!65 &1334462562
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334462558}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 10, z: 1}
+  m_Center: {x: 0.00000005960464, y: 2, z: -0.00000008940695}
 --- !u!850595691 &1347003812
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -16966,3 +17072,5 @@ SceneRoots:
   - {fileID: 105471672}
   - {fileID: 1334462561}
   - {fileID: 336512089}
+  - {fileID: 1333728280}
+  - {fileID: 508547127}

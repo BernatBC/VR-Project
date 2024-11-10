@@ -7,28 +7,17 @@ public class PortalManager : MonoBehaviour
     public Transform InitialPos;
     public Transform BattlefieldPos;
 
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (col.CompareTag("Portal A"))
+        if (collision.gameObject.CompareTag("Portal A"))
         {
-            CharacterController cc = GetComponent<CharacterController>();
-
-            cc.enabled = false;
-            transform.position = BattlefieldPos.transform.position;
-            transform.rotation = new Quaternion(transform.rotation.x, BattlefieldPos.rotation.y, transform.rotation.z, transform.rotation.w);
-
-            cc.enabled = true;
+            Debug.Log("Portal A");
+            transform.position = BattlefieldPos.position;
         }
-        if (col.CompareTag("Portal B"))
+        if (collision.gameObject.CompareTag("Portal B"))
         {
-            CharacterController cc = GetComponent<CharacterController>();
-
-            cc.enabled = false;
-            transform.position = InitialPos.transform.position;
-            transform.rotation = new Quaternion(transform.rotation.x, InitialPos.rotation.y, transform.rotation.z, transform.rotation.w);
-
-            cc.enabled = true;
+            Debug.Log("Portal B");
+            transform.position = InitialPos.position;
         }
     }
-
 }

@@ -30682,9 +30682,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 907292807}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b0e31921703b4a4e92cb796c1d2a460, type: 3}
+  m_Script: {fileID: 11500000, guid: e4511193ad612e2439301f32de92e6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InitialPos: {fileID: 830556740}
+  BattlefieldPos: {fileID: 1886862256}
 --- !u!1001 &908307173
 PrefabInstance:
   m_ObjectHideFlags: 0
